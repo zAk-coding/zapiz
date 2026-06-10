@@ -122,7 +122,7 @@ bot.on('group-participants-update', async (data) => {
 
 bot.start();
 ```
-### ou baixe o projeto e inicie por la com o bot.js
+### Alternativamente, baixe o projeto pronto e inicie através do arquivo `bot.js`.
 ---
 
 ### 5. Iniciar o bot
