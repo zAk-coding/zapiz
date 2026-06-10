@@ -1,5 +1,231 @@
 # 🚀 ZAPIZ - v1.0.1
 
+**Zapiz** is a WhatsApp bot library focused on simplicity. Install it, scan the QR Code, and get your bot running in minutes.
+
+---
+
+## ✨ Features
+
+* 📱 QR Code authentication
+* 👥 Group management
+* 🛡️ Admin controls
+* 🗑️ Message deletion
+* ⚡ Simple and fast to use
+* 🚀 Ready out of the box
+
+---
+
+## 📋 Available Commands
+
+Send `!menu` in any group:
+
+```text
+┌─ Zapiz Bot
+├ !adm @      - Promote Admin
+├ !unadm @    - Remove Admin
+├ !ban @      - Remove Member
+├ !unmsg      - Delete Message
+├ !close      - Close Group
+├ !open       - Open Group
+├ !menu       - View Commands
+└────────────
+```
+
+| Command        | Description                         | Permission |
+| -------------- | ----------------------------------- | ---------- |
+| `!menu`        | Display all available commands      | Everyone   |
+| `!adm @user`   | Promote a user to admin             | Admin      |
+| `!unadm @user` | Remove admin privileges             | Admin      |
+| `!ban @user`   | Remove a group member               | Admin      |
+| `!unmsg`       | Delete a replied message            | Admin      |
+| `!close`       | Close the group for regular members | Admin      |
+| `!open`        | Reopen the group                    | Admin      |
+
+---
+
+## ⚙️ Requirements
+
+| Requirement | Version      |
+| ----------- | ------------ |
+| Node.js     | 20 or higher |
+
+> **Important:** Check your Node.js version by running:
+
+```bash
+node --version
+```
+
+The output must be **v20.0.0** or higher.
+
+---
+
+## 📦 Installation
+
+### 1. Create a project folder
+
+```bash
+mkdir my-bot
+cd my-bot
+```
+
+### 2. Initialize the project
+
+```bash
+npm init -y
+```
+
+### 3. Install Zapiz
+
+```bash
+npm install @zak-coding/zapiz
+```
+
+### 4. Create your bot file
+
+Create a file named `bot.js`:
+
+```js
+import { createBot } from '@zak-coding/zapiz';
+
+const bot = await createBot({
+    authFolder: 'my-auth'
+});
+
+bot.on('ready', () => {
+    console.log('✅ Bot connected!');
+    console.log(`
+Commands:
+===========================
+
+!adm @     - Promote Admin
+!unadm @   - Remove Admin
+!ban @*    - Remove Member
+!unmsg*    - Delete Message
+!close     - Close Group
+!open      - Open Group
+
+===========================
+`);
+});
+
+bot.on('group-participants-update', async (data) => {
+    if (data.action === 'add') {
+        for (const user of data.participants) {
+            const name = user.split('@')[0];
+
+            await bot.sock.sendMessage(data.groupId, {
+                text: \`Hello, @\${name} ✨\n> Welcome to the group\`,
+                mentions: [user]
+            });
+        }
+    }
+});
+
+bot.start();
+```
+
+### Or download the example project and run it directly using `bot.js`.
+
+---
+
+### 5. Start the bot
+
+```bash
+node bot.js
+```
+
+---
+
+## 📱 Connecting to WhatsApp
+
+When the bot starts, a QR Code will be displayed in the terminal.
+
+### How to connect
+
+1. Open WhatsApp on your phone
+2. Go to **Settings**
+3. Tap **Linked Devices**
+4. Tap **Link a Device**
+5. Scan the QR Code displayed in the terminal
+
+After authentication:
+
+```text
+✅ Account connected successfully.
+📜 Type !menu in any group.
+```
+
+---
+
+## 👥 Adding the Bot to a Group
+
+1. Add the connected number to a group
+2. Promote the bot to administrator
+3. Send:
+
+```text
+!menu
+```
+
+That's it! Zapiz is now ready to use.
+
+---
+
+## 📁 Project Structure
+
+```text
+my-bot/
+├── my-auth/
+├── node_modules/
+├── bot.js
+├── package.json
+└── package-lock.json
+```
+
+The `my-auth` folder is created automatically and stores your WhatsApp session.
+
+---
+
+## ❓ Troubleshooting
+
+### QR Code does not appear
+
+Make sure you are using Node.js 20 or newer.
+
+### The bot does not respond
+
+Verify that the bot has administrator permissions in the group.
+
+### Want to connect another account?
+
+Delete the authentication folder:
+
+**Windows**
+
+```bash
+rmdir /s /q my-auth
+```
+
+**Linux / macOS**
+
+```bash
+rm -rf my-auth
+```
+
+Then start the bot again:
+
+```bash
+node bot.js
+```
+
+---
+
+==================================================================
+                          🇧🇷 PORTUGUÊS
+==================================================================
+
+# 🚀 ZAPIZ - v1.0.1
+
 **Zapiz** é uma biblioteca para criação de bots de WhatsApp focada em simplicidade. Instale, escaneie o QR Code e comece a utilizar seu bot em poucos minutos.
 
 ---
