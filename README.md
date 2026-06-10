@@ -30,6 +30,8 @@ Send `!menu` in any group:
 ├ !menu       - View Commands
 └────────────
 ```
+> 🚀 Mais comandos e funcionalidades serão adicionados à biblioteca em futuras atualizações.
+---
 
 | Command        | Description                         | Permission |
 | -------------- | ----------------------------------- | ---------- |
@@ -256,6 +258,8 @@ Envie `!menu` em qualquer grupo:
 ├ !menu       - Ver Comandos
 └────────────
 ```
+> 🚀 More commands and features will be added to the library in future updates.
+---
 
 | Comando           | Descrição                            | Permissão |
 | ----------------- | ------------------------------------ | --------- |
